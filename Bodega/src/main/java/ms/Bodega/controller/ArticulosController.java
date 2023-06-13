@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/articulos")
@@ -20,5 +21,14 @@ public class ArticulosController {
     @GetMapping("/obtenerTodosArticulos")
     public List<Articulos> obtenerTodosArticulos() {
         return articulosService.obtenerTodosArticulos();
+    }
+
+    @PutMapping("/actualizar")
+    public Articulos editarArticulos(@RequestBody Articulos articulos){
+       return articulosService.editarArticulo(articulos);
+    }
+    @GetMapping("/buscar/{id}")
+    public Optional<Articulos> buscarId(@PathVariable Long id){
+       return articulosService.buscarId(id);
     }
 }

@@ -17,7 +17,6 @@ public class ArticulosController {
        return  articulosService.agregarArticulo(articulos);
 
    }
-
     @GetMapping("/obtenerTodosArticulos")
     public List<Articulos> obtenerTodosArticulos() {
         return articulosService.obtenerTodosArticulos();
@@ -27,8 +26,21 @@ public class ArticulosController {
     public Articulos editarArticulos(@RequestBody Articulos articulos){
        return articulosService.editarArticulo(articulos);
     }
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/buscarid/{id}")
     public Optional<Articulos> buscarId(@PathVariable Long id){
+
        return articulosService.buscarId(id);
+    }
+    @GetMapping("/buscarcodigo/{codigoBarra}")
+    public Articulos buscarPorCodigoBarras(@PathVariable String codigoBarra) {
+        return articulosService.buscarPorCodigoBarras(codigoBarra);
+    }
+    @GetMapping("/buscarNombre/{nombre}")
+    public List<Articulos> buscarPorNombre(@PathVariable String nombre) {
+        return articulosService.buscarPorNombre(nombre);
+    }
+    @DeleteMapping("/eliminar/{id}")
+    public String buscarPorNombre(@PathVariable Long id) {
+       return articulosService.eliminarArticulo(id);
     }
 }
